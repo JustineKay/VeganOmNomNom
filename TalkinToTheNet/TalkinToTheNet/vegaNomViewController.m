@@ -35,7 +35,8 @@
     self.whereTextField.delegate = self;
     self.locationManager.delegate = self;
     
-    [self.locationManager startUpdatingLocation];
+    //[self.locationManager requestLocation];
+    //[self.locationManager startUpdatingLocation];
     
 }
 
@@ -45,6 +46,8 @@
     
     //url(media=music, term=searchterm)
     NSString *urlString = [NSString stringWithFormat:@"https://itunes.apple.com/search?media=music&term=%@", searchTerm];
+    
+    //https://api.foursquare.com/v2/venues/explore?ll=40.7,-74&query=vegan&oauth_token=LBLFB0ZHUZAN1SA4RYQUQ4BT0RB11Z03GZ33D0ZXAFTDXSNV&v=20150922
     
     //encoded url
     NSString *encodedString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
