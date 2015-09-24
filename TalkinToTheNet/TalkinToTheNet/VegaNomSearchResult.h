@@ -16,6 +16,6 @@
 @property (nonatomic) UIImage *avatar;
 @property (nonatomic) NSString *address;
 @property (nonatomic) NSString *phoneNumber;
-@property (nonatomic) NSString *hoursOfOperation;
+@property (nonatomic) NSString *twitterHandle;
 
 @end

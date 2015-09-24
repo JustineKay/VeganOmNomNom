@@ -10,6 +10,8 @@
 #import "APIManager.h"
 #import "VegaNomSearchResult.h"
 #import <CoreLocation/CoreLocation.h>
+#import "NSURLRequest+OAuth.h"
+#import "YPAPISample.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -40,14 +42,17 @@
     
 }
 
--(void)makeNewFourSquareRequestWithSearchTerm: (NSString *)searchTerm callbackBlock: (void(^)())block{
+
+
+/*-(void)makeNewFourSquareRequestWithSearchTerm: (NSString *)searchTerm callbackBlock: (void(^)())block{
     
     //searchTerm (comes from our parameter)
     
-    //url(media=music, term=searchterm)
-    NSString *urlString = [NSString stringWithFormat:@"https://itunes.apple.com/search?media=music&term=%@", searchTerm];
+    //url(query=searchterm)
+    NSString *urlString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/explore?ll=40.7,-74&query=%@&oauth_token=LBLFB0ZHUZAN1SA4RYQUQ4BT0RB11Z03GZ33D0ZXAFTDXSNV&v=20150922", searchTerm];
     
-    //https://api.foursquare.com/v2/venues/explore?ll=40.7,-74&query=vegan&oauth_token=LBLFB0ZHUZAN1SA4RYQUQ4BT0RB11Z03GZ33D0ZXAFTDXSNV&v=20150922
+    NSLog(@"%@", urlString);
+    
     
     //encoded url
     NSString *encodedString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
@@ -61,22 +66,33 @@
             
             //do something with data
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            //NSLog(@"%@", json);
+            NSLog(@"%@", json);
             
-            NSArray *results = [json objectForKey:@"results"];
+            NSDictionary *results = [json objectForKey:@"response"];
             
             self.searchResults = [[NSMutableArray alloc] init];
             
             for (NSDictionary *result in results) {
                 
-                NSString *venue = [result objectForKey:@"artistName"];
-                NSString *distance = [result objectForKey:@"trackName"];
-                NSString *address = [result objectForKey:@"artistName"];
-                NSString *phone = [result objectForKey:@"trackName"];
-                NSString *hours = [result objectForKey:@"artistName"];
+                NSDictionary *groups = [result objectForKey:@"groups"];
+                NSLog(@"groups: %@", groups);
                 
-                NSString *avatarURL = [result objectForKey:@"artworkUrl100"];
-                UIImage *avatarImage = [APIManager createImageFromString:avatarURL];
+                NSDictionary *items = [groups objectForKey:@"items"];
+                NSDictionary *venueList = [items objectForKey:@"venue"];
+                NSDictionary *contact = [venueList objectForKey:@"contact"];
+                NSDictionary *location = [venueList objectForKey:@"location"];
+                
+                NSString *venue = [venueList objectForKey:@"name"];
+                
+                NSString *distance = [location objectForKey:@"distance"];
+                
+                NSArray *addressArray = [venueList objectForKey:@"formattedAddress"];
+                NSString *addressLine1 = addressArray[0];
+                NSString *addressLine2 = addressArray[1];
+                NSString *address = [NSString stringWithFormat:@"%@/n%@", addressLine1, addressLine2];
+                
+                NSString *phone = [contact objectForKey:@"formattedPhone"];
+                NSString *twitter = [contact objectForKey:@"twitter"];
                 
                 VegaNomSearchResult *venueObject = [[VegaNomSearchResult alloc] init];
                 
@@ -84,21 +100,20 @@
                 venueObject.distance = distance;
                 venueObject.address = address;
                 venueObject.phoneNumber = phone;
-                venueObject.hoursOfOperation = hours;
-                venueObject.avatar = avatarImage;
+                venueObject.twitterHandle = twitter;
                 
                 [self.searchResults addObject:venueObject];
                 
             }
             
-            //NSLog(@"%@", self.searchResults);
+            NSLog(@"%@", self.searchResults);
             
             //executes the block that we're passing to the method
             block();
         }
     }];
     
-}
+}*/
 
 #pragma mark - CLLocationManagerDelegate methods
 
@@ -132,7 +147,6 @@
     
     cell.textLabel.text = currentResult.venueName;
     cell.detailTextLabel.text = currentResult.distance;
-    cell.imageView.image = currentResult.avatar;
     
     return cell;
 }
@@ -145,9 +159,30 @@
     [self.view endEditing:YES];
     
     //make an api request
-    [self makeNewFourSquareRequestWithSearchTerm:textField.text callbackBlock:^{
+    
+    NSString *location = @"New York, NY";
+    NSString *searchTerms = [NSString stringWithFormat:@"vegan,%@", textField.text];
+    
+    YPAPISample *yelpAPIRequest = [[YPAPISample alloc] init];
+    [yelpAPIRequest queryTopBusinessInfoForTerm:searchTerms location:location completionHandler:^(NSDictionary *jsonResponse, NSError *error) {
+        
+        if (error) {
+            
+            NSLog(@"An error happened during the request: %@", error);
+            
+        } else {
+            
+            NSLog(@"No business was found");
+        
+        }
+        
         [self.tableView reloadData];
     }];
+
+    
+//    [self makeNewFourSquareRequestWithSearchTerm:textField.text callbackBlock:^{
+//        [self.tableView reloadData];
+//    }];
     
     
     return YES;
