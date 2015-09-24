@@ -3,6 +3,7 @@
 //  YelpAPI
 
 #import "YPAPISample.h"
+#import "NSURLRequest+OAuth.h"
 
 /**
  Default paths and search terms used in this example

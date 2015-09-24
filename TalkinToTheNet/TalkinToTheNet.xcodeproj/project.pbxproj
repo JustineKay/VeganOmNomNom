@@ -10,26 +10,26 @@
 		6BA440E91BB0DB5700BEC68E /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA440E81BB0DB5700BEC68E /* APIManager.m */; settings = {ASSET_TAGS = (); }; };
 		6BA440EC1BB0DBA700BEC68E /* vegaNomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA440EB1BB0DBA700BEC68E /* vegaNomViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6BA440F21BB0DF3900BEC68E /* VegaNomSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA440F11BB0DF3900BEC68E /* VegaNomSearchResult.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0C71BB37D8A00442479 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C09A1BB37D8A00442479 /* main.m */; settings = {ASSET_TAGS = (); }; };
 		6BC1C0C81BB37D8A00442479 /* NSURLRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C09C1BB37D8A00442479 /* NSURLRequest+OAuth.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0C91BB37D8A00442479 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0A01BB37D8A00442479 /* NSMutableURLRequest+Parameters.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0CA1BB37D8A00442479 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0A21BB37D8A00442479 /* NSString+URLEncoding.m */; settings = {ASSET_TAGS = (); }; };
+		6BC1C0C91BB37D8A00442479 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0A01BB37D8A00442479 /* NSMutableURLRequest+Parameters.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6BC1C0CA1BB37D8A00442479 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0A21BB37D8A00442479 /* NSString+URLEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6BC1C0CB1BB37D8A00442479 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0A41BB37D8A00442479 /* NSURL+Base.m */; settings = {ASSET_TAGS = (); }; };
 		6BC1C0CC1BB37D8A00442479 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0A61BB37D8A00442479 /* Base64Transcoder.c */; settings = {ASSET_TAGS = (); }; };
 		6BC1C0CD1BB37D8A00442479 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0A81BB37D8A00442479 /* hmac.c */; settings = {ASSET_TAGS = (); }; };
 		6BC1C0CE1BB37D8A00442479 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0AA1BB37D8A00442479 /* sha1.c */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0CF1BB37D8A00442479 /* OACall.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0AD1BB37D8A00442479 /* OACall.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0D01BB37D8A00442479 /* OAConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0AF1BB37D8A00442479 /* OAConsumer.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0D11BB37D8A00442479 /* OADataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0B11BB37D8A00442479 /* OADataFetcher.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0D21BB37D8A00442479 /* OAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0B31BB37D8A00442479 /* OAHMAC_SHA1SignatureProvider.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0D31BB37D8A00442479 /* OAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0B51BB37D8A00442479 /* OAMutableURLRequest.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0D41BB37D8A00442479 /* OAPlaintextSignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0B71BB37D8A00442479 /* OAPlaintextSignatureProvider.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0D51BB37D8A00442479 /* OAProblem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0B91BB37D8A00442479 /* OAProblem.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0D61BB37D8A00442479 /* OARequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0BB1BB37D8A00442479 /* OARequestParameter.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0D71BB37D8A00442479 /* OAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0BD1BB37D8A00442479 /* OAServiceTicket.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0D81BB37D8A00442479 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0C01BB37D8A00442479 /* OAToken.m */; settings = {ASSET_TAGS = (); }; };
-		6BC1C0D91BB37D8A00442479 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0C21BB37D8A00442479 /* OATokenManager.m */; settings = {ASSET_TAGS = (); }; };
+		6BC1C0CF1BB37D8A00442479 /* OACall.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0AD1BB37D8A00442479 /* OACall.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6BC1C0D01BB37D8A00442479 /* OAConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0AF1BB37D8A00442479 /* OAConsumer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6BC1C0D11BB37D8A00442479 /* OADataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0B11BB37D8A00442479 /* OADataFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6BC1C0D21BB37D8A00442479 /* OAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0B31BB37D8A00442479 /* OAHMAC_SHA1SignatureProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6BC1C0D31BB37D8A00442479 /* OAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0B51BB37D8A00442479 /* OAMutableURLRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6BC1C0D41BB37D8A00442479 /* OAPlaintextSignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0B71BB37D8A00442479 /* OAPlaintextSignatureProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6BC1C0D51BB37D8A00442479 /* OAProblem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0B91BB37D8A00442479 /* OAProblem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6BC1C0D61BB37D8A00442479 /* OARequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0BB1BB37D8A00442479 /* OARequestParameter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6BC1C0D71BB37D8A00442479 /* OAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0BD1BB37D8A00442479 /* OAServiceTicket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6BC1C0D81BB37D8A00442479 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0C01BB37D8A00442479 /* OAToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6BC1C0D91BB37D8A00442479 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0C21BB37D8A00442479 /* OATokenManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6BC1C0DA1BB37D8A00442479 /* YPAPISample.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0C61BB37D8A00442479 /* YPAPISample.m */; settings = {ASSET_TAGS = (); }; };
+		6BC1C0DC1BB391B500442479 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC1C0DB1BB391B500442479 /* Foundation.framework */; };
 		8D7DCD4B1BAF859400A92AD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7DCD4A1BAF859400A92AD2 /* main.m */; };
 		8D7DCD4E1BAF859400A92AD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7DCD4D1BAF859400A92AD2 /* AppDelegate.m */; };
 		8D7DCD541BAF859400A92AD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D7DCD521BAF859400A92AD2 /* Main.storyboard */; };
@@ -44,7 +44,6 @@
 		6BA440EB1BB0DBA700BEC68E /* vegaNomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = vegaNomViewController.m; sourceTree = "<group>"; };
 		6BA440F01BB0DF3900BEC68E /* VegaNomSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegaNomSearchResult.h; sourceTree = "<group>"; };
 		6BA440F11BB0DF3900BEC68E /* VegaNomSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegaNomSearchResult.m; sourceTree = "<group>"; };
-		6BC1C09A1BB37D8A00442479 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BC1C09B1BB37D8A00442479 /* NSURLRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+OAuth.h"; sourceTree = "<group>"; };
 		6BC1C09C1BB37D8A00442479 /* NSURLRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+OAuth.m"; sourceTree = "<group>"; };
 		6BC1C09F1BB37D8A00442479 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		6BC1C0C41BB37D8A00442479 /* YelpAPISample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YelpAPISample-Prefix.pch"; sourceTree = "<group>"; };
 		6BC1C0C51BB37D8A00442479 /* YPAPISample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPAPISample.h; sourceTree = "<group>"; };
 		6BC1C0C61BB37D8A00442479 /* YPAPISample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPAPISample.m; sourceTree = "<group>"; };
+		6BC1C0DB1BB391B500442479 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8D7DCD461BAF859400A92AD2 /* TalkinToTheNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkinToTheNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D7DCD4A1BAF859400A92AD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D7DCD4C1BAF859400A92AD2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -101,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BC1C0DC1BB391B500442479 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +111,6 @@
 		6BC1C0991BB37D8A00442479 /* YelpAPISample */ = {
 			isa = PBXGroup;
 			children = (
-				6BC1C09A1BB37D8A00442479 /* main.m */,
 				6BC1C09B1BB37D8A00442479 /* NSURLRequest+OAuth.h */,
 				6BC1C09C1BB37D8A00442479 /* NSURLRequest+OAuth.m */,
 				6BC1C09D1BB37D8A00442479 /* OAuthConsumer */,
@@ -183,6 +183,7 @@
 		8D7DCD3D1BAF859400A92AD2 = {
 			isa = PBXGroup;
 			children = (
+				6BC1C0DB1BB391B500442479 /* Foundation.framework */,
 				8D7DCD481BAF859400A92AD2 /* TalkinToTheNet */,
 				8D7DCD471BAF859400A92AD2 /* Products */,
 			);
@@ -315,7 +316,6 @@
 				8D7DCD4B1BAF859400A92AD2 /* main.m in Sources */,
 				6BA440EC1BB0DBA700BEC68E /* vegaNomViewController.m in Sources */,
 				6BC1C0CC1BB37D8A00442479 /* Base64Transcoder.c in Sources */,
-				6BC1C0C71BB37D8A00442479 /* main.m in Sources */,
 				6BA440E91BB0DB5700BEC68E /* APIManager.m in Sources */,
 				6BC1C0D01BB37D8A00442479 /* OAConsumer.m in Sources */,
 				6BC1C0C81BB37D8A00442479 /* NSURLRequest+OAuth.m in Sources */,
