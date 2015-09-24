@@ -12,10 +12,8 @@
 @interface VegaNomSearchResult : NSObject
 
 @property (nonatomic) NSString *venueName;
-@property (nonatomic) NSString *distance;
 @property (nonatomic) UIImage *avatar;
 @property (nonatomic) NSString *address;
 @property (nonatomic) NSString *phoneNumber;
-@property (nonatomic) NSString *twitterHandle;
 
 @end

@@ -11,7 +11,7 @@
 static NSString * const kAPIHost           = @"api.yelp.com";
 static NSString * const kSearchPath        = @"/v2/search/";
 static NSString * const kBusinessPath      = @"/v2/business/";
-static NSString * const kSearchLimit       = @"3";
+static NSString * const kSearchLimit       = @"20";
 
 @implementation YPAPISample
 

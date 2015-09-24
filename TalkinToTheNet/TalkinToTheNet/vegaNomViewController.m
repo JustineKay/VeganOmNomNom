@@ -63,42 +63,43 @@
             
             NSDictionary *results = jsonResponse;
             
+            NSLog(@"jsonResponse dictionary: %@", results);
+            
             self.searchResults = [[NSMutableArray alloc] init];
             
-//            for (NSDictionary *result in results) {
-//                
-//                NSDictionary *groups = [result objectForKey:@"groups"];
-//                NSLog(@"groups: %@", groups);
-//                
-//                NSDictionary *items = [groups objectForKey:@"items"];
-//                NSDictionary *venueList = [items objectForKey:@"venue"];
-//                NSDictionary *contact = [venueList objectForKey:@"contact"];
-//                NSDictionary *location = [venueList objectForKey:@"location"];
-//                
-//                NSString *venue = [venueList objectForKey:@"name"];
-//                
-//                NSString *distance = [location objectForKey:@"distance"];
-//                
-//                NSArray *addressArray = [venueList objectForKey:@"formattedAddress"];
-//                NSString *addressLine1 = addressArray[0];
-//                NSString *addressLine2 = addressArray[1];
-//                NSString *address = [NSString stringWithFormat:@"%@/n%@", addressLine1, addressLine2];
-//                
-//                NSString *phone = [contact objectForKey:@"formattedPhone"];
-//                NSString *twitter = [contact objectForKey:@"twitter"];
-//                
-//                VegaNomSearchResult *venueObject = [[VegaNomSearchResult alloc] init];
-//                
-//                venueObject.venueName = venue;
-//                venueObject.distance = distance;
-//                venueObject.address = address;
-//                venueObject.phoneNumber = phone;
-//                venueObject.twitterHandle = twitter;
-//                
-//                [self.searchResults addObject:venueObject];
+            for (NSDictionary *result in results) {
+                
+                NSString *venue = [result objectForKey:@"name"];
+                NSLog(@"venuename: %@", venue);
+                
+                NSDictionary *location = [result objectForKey:@"location"];
+                NSLog(@"location dictionary: %@", location);
+                
+                NSArray *addressArray = [location objectForKey:@"display_address"];
+                NSString *addressLine1 = addressArray[0];
+                NSString *addressLine2 = addressArray[1];
+                NSString *addressLine3 = addressArray[2];
+                NSString *venueAddress = [NSString stringWithFormat:@"%@ %@ %@", addressLine1, addressLine2, addressLine3];
+                
+                NSLog(@"address: %@", venueAddress);
+                
+                NSString *phone = [result objectForKey:@"display_phone"];
+                
+                NSString *venueImage = [result objectForKey:@"image_url"];
+                
+                UIImage *image = [APIManager createImageFromString:venueImage];
+                
+                VegaNomSearchResult *venueObject = [[VegaNomSearchResult alloc] init];
+                
+                venueObject.venueName = venue;
+                venueObject.address = venueAddress;
+                venueObject.phoneNumber = phone;
+                venueObject.avatar = image;
+                
+                [self.searchResults addObject:venueObject];
+            }
             
-            
-        } else {
+        }else {
             NSLog(@"No business was found");
         }
         
@@ -144,7 +145,8 @@
     VegaNomSearchResult *currentResult = self.searchResults[indexPath.row];
     
     cell.textLabel.text = currentResult.venueName;
-    cell.detailTextLabel.text = currentResult.distance;
+    cell.detailTextLabel.text = currentResult.address;
+    cell.imageView.image = currentResult.avatar;
     
     return cell;
 }
