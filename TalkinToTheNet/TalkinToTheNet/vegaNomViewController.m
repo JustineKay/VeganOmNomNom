@@ -12,6 +12,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "NSURLRequest+OAuth.h"
 #import "YPAPISample.h"
+#import "InstagramDetailViewController.h"
+#import "InstaPost.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -37,16 +39,11 @@
     self.whereTextField.delegate = self;
     self.locationManager.delegate = self;
     
-    //[self.locationManager requestLocation];
-    //[self.locationManager startUpdatingLocation];
-    
 }
 
 
 
 -(void)makeNewYelpRequestWithSearchTerm: (NSString *)searchTerm callbackBlock: (void(^)())block{
-    
-    //make the request
     
     NSString *location = @"New York, NY";
     NSString *searchTerms = [NSString stringWithFormat:@"vegan,%@", searchTerm];
@@ -76,10 +73,8 @@
                 NSLog(@"location dictionary: %@", location);
                 
                 NSArray *addressArray = [location objectForKey:@"display_address"];
-                NSString *addressLine1 = addressArray[0];
-                NSString *addressLine2 = addressArray[1];
-                NSString *addressLine3 = addressArray[2];
-                NSString *venueAddress = [NSString stringWithFormat:@"%@ %@ %@", addressLine1, addressLine2, addressLine3];
+                
+                NSString *venueAddress = [APIManager createAddressFromArray:addressArray];
                 
                 NSLog(@"address: %@", venueAddress);
                 
@@ -108,10 +103,6 @@
         }
         
     }];
-            
-            //executes the block that we're passing to the method
-//            block();
-    
     
 }
 
@@ -165,23 +156,25 @@
         [self.tableView reloadData];
     }];
     
-//    [self makeNewFourSquareRequestWithSearchTerm:textField.text callbackBlock:^{
-//        [self.tableView reloadData];
-//    }];
-    
-    
     return YES;
 }
 
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    VegaNomSearchResult *currentResult = self.searchResults [indexPath.row];
+    
+    NSString *currentResultTagName = [APIManager createTagFromVenueName:currentResult.venueName];
+    
+    InstagramDetailViewController *detailViewController = segue.destinationViewController;
+    
+    detailViewController.venueNameTag = currentResultTagName;
+    
 }
-*/
 
 @end

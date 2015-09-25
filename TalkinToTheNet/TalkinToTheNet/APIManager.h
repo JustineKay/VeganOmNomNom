@@ -16,4 +16,8 @@
 
 + (UIImage *)createImageFromString:(NSString *)urlString;
 
++ (NSString *)createAddressFromArray: (NSArray *)addressArray;
+
++ (NSString *)createTagFromVenueName: (NSString *)venueName;
+
 @end

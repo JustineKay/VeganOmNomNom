@@ -53,5 +53,34 @@
     
 }
 
++ (NSString *)createAddressFromArray: (NSArray *)addressArray{
+    
+    NSString *venueAddress;
+    
+    if (addressArray.count == 3) {
+        
+        venueAddress = [NSString stringWithFormat:@"%@ %@ %@", addressArray[0], addressArray[1], addressArray[2]];
+        
+    }else if (addressArray.count == 2){
+        
+        venueAddress = [NSString stringWithFormat:@"%@ %@", addressArray[0], addressArray[1]];
+    }else{
+    
+        venueAddress = addressArray[0];
+        
+    }
+    
+    return venueAddress;
+}
+
++ (NSString *)createTagFromVenueName: (NSString *)venueName{
+    
+    NSString *venueNameNoSpaces = [venueName stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSString *venueTag = [venueNameNoSpaces lowercaseString];
+    
+    return venueTag;
+}
+
 
 @end
