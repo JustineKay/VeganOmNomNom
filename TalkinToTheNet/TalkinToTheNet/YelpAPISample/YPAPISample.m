@@ -17,7 +17,7 @@ static NSString * const kSearchLimit       = @"20";
 
 #pragma mark - Public
 
-- (void)queryTopBusinessInfoForTerm:(NSString *)term location:(NSString *)location completionHandler:(void (^)(NSDictionary *topBusinessJSON, NSError *error))completionHandler {
+- (void)queryTopBusinessInfoForTerm:(NSString *)term location:(NSString *)location completionHandler:(void (^)(NSArray *businesses, NSError *error))completionHandler {
 
   NSLog(@"Querying the Search API with term \'%@\' and location \'%@'", term, location);
 
@@ -38,7 +38,10 @@ static NSString * const kSearchLimit       = @"20";
         NSString *firstBusinessID = firstBusiness[@"id"];
         NSLog(@"%lu businesses found, querying business info for the top result: %@", (unsigned long)[businessArray count], firstBusinessID);
 
-        [self queryBusinessInfoForBusinessId:firstBusinessID completionHandler:completionHandler];
+          dispatch_async(dispatch_get_main_queue(), ^{
+              completionHandler(businessArray, nil);
+          });
+//        [self queryBusinessInfoForBusinessId:firstBusinessID completionHandler:completionHandler];
       } else {
         completionHandler(nil, error); // No business was found
       }

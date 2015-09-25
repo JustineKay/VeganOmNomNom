@@ -53,26 +53,26 @@
     
     YPAPISample *yelpAPIRequest = [[YPAPISample alloc] init];
     
-    [yelpAPIRequest queryTopBusinessInfoForTerm:searchTerms location:location completionHandler:^(NSDictionary *jsonResponse, NSError *error) {
+    [yelpAPIRequest queryTopBusinessInfoForTerm:searchTerms location:location completionHandler:^(NSArray *businesses, NSError *error) {
         
         if (error) {
             NSLog(@"An error happened during the request: %@", error);
             
-        } else if (jsonResponse) {
-            NSLog(@"Top business info: \n %@", jsonResponse);
+        } else if (businesses) {
+            NSLog(@"Top business info: \n %@", businesses);
             
-            NSDictionary *results = jsonResponse;
+            NSArray *result = businesses;
             
-            NSLog(@"jsonResponse dictionary: %@", results);
+            NSLog(@"jsonResponse dictionary: %@", result);
             
             self.searchResults = [[NSMutableArray alloc] init];
             
-            for (NSDictionary *result in results) {
+            for (NSDictionary *business in businesses) {
                 
-                NSString *venue = [result objectForKey:@"name"];
+                NSString *venue = [business objectForKey:@"name"];
                 NSLog(@"venuename: %@", venue);
                 
-                NSDictionary *location = [result objectForKey:@"location"];
+                NSDictionary *location = [business objectForKey:@"location"];
                 NSLog(@"location dictionary: %@", location);
                 
                 NSArray *addressArray = [location objectForKey:@"display_address"];
@@ -83,12 +83,12 @@
                 
                 NSLog(@"address: %@", venueAddress);
                 
-                NSString *phone = [result objectForKey:@"display_phone"];
+                NSString *phone = [business objectForKey:@"display_phone"];
                 
-                NSString *venueImage = [result objectForKey:@"image_url"];
+                NSString *venueImage = [business objectForKey:@"image_url"];
                 
                 UIImage *image = [APIManager createImageFromString:venueImage];
-                
+            
                 VegaNomSearchResult *venueObject = [[VegaNomSearchResult alloc] init];
                 
                 venueObject.venueName = venue;
@@ -97,6 +97,10 @@
                 venueObject.avatar = image;
                 
                 [self.searchResults addObject:venueObject];
+            
+                NSLog(@"%@", self.searchResults);
+                
+                block();
             }
             
         }else {
@@ -104,12 +108,9 @@
         }
         
     }];
-    
-            
-            NSLog(@"%@", self.searchResults);
             
             //executes the block that we're passing to the method
-            block();
+//            block();
     
     
 }
