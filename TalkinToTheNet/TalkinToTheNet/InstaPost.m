@@ -7,6 +7,7 @@
 //
 
 #import "InstaPost.h"
+#import "APIManager.h"
 
 @implementation InstaPost
 
@@ -23,6 +24,10 @@
         self.username = json[@"user"][@"username"];
         self.fullName = json[@"user"][@"full_name"];
         self.caption = json[@"caption"];
+        
+        NSString *imageURLString = json[@"images"][@"low_resolution"][@"url"];
+        UIImage *image = [APIManager createImageFromString:imageURLString];
+        self.instaImage = image;
         
         return self;
     

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface InstaPost : NSObject
 
@@ -16,6 +17,7 @@
 @property (nonatomic) NSString *username;
 @property (nonatomic) NSString *fullName;
 @property (nonatomic) NSDictionary *caption;
+@property (nonatomic) UIImage *instaImage;
 
 -(instancetype)initWithJSON: (NSDictionary *)json;
 
