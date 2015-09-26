@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *whatTextField;
 @property (weak, nonatomic) IBOutlet UITextField *whereTextField;
 @property (nonatomic) NSMutableArray *searchResults;
+@property (nonatomic) NSString *searchTerm;
+@property (nonatomic) NSString *location;
 
 //Not currently using CLLocationManager, but plan to implement in next version
 @property (nonatomic) CLLocationManager *locationManager;
@@ -45,9 +47,9 @@
 
 
 
--(void)makeNewYelpRequestWithSearchTerm: (NSString *)searchTerm callbackBlock: (void(^)())block{
+-(void)makeNewYelpRequestWithSearchTerm: (NSString *)searchTerm andLocation: (NSString *)location callbackBlock: (void(^)())block{
     
-    NSString *location = @"New York, NY";
+    //NSString *location = @"New York, NY";
     NSString *searchTerms = [NSString stringWithFormat:@"vegan,%@", searchTerm];
     
     YPAPISample *yelpAPIRequest = [[YPAPISample alloc] init];
@@ -138,11 +140,48 @@
     //dismiss keyboard
     [self.view endEditing:YES];
     
-    //make an api request
     
-    [self makeNewYelpRequestWithSearchTerm:textField.text callbackBlock:^{
-        [self.tableView reloadData];
-    }];
+    if (self.whatTextField.text == nil || self.whereTextField.text == nil) {
+        
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Oops!"
+                                                                       message:@"Please enter a search term"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        alert.view.tintColor = [UIColor yellowColor];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        [self makeNewYelpRequestWithSearchTerm:self.searchTerm andLocation: self.location callbackBlock:^{
+            [self.tableView reloadData];
+        }];
+        
+        
+    }else if (self.whereTextField.text == nil){
+        
+        self.searchTerm = self.whatTextField.text;
+        self.location = @"NewYork, NY";
+        
+        [self makeNewYelpRequestWithSearchTerm:self.searchTerm andLocation: self.location callbackBlock:^{
+            [self.tableView reloadData];
+        }];
+    
+    
+    }else{
+        
+        self.searchTerm = self.whatTextField.text;
+        self.location = self.whereTextField.text;
+        
+        [self makeNewYelpRequestWithSearchTerm:self.searchTerm andLocation: self.location callbackBlock:^{
+            [self.tableView reloadData];
+        }];
+        
+    }
+    
+    
     
     return YES;
 }
