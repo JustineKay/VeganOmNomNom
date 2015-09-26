@@ -49,7 +49,6 @@
 
 -(void)makeNewYelpRequestWithSearchTerm: (NSString *)searchTerm andLocation: (NSString *)location callbackBlock: (void(^)())block{
     
-    //NSString *location = @"New York, NY";
     NSString *searchTerms = [NSString stringWithFormat:@"vegan,%@", searchTerm];
     
     YPAPISample *yelpAPIRequest = [[YPAPISample alloc] init];
@@ -90,6 +89,20 @@
             
         }else {
             NSLog(@"No business was found");
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"No businesses found."
+                                                                           message:@"Please be sure to enter a city and state"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            alert.view.tintColor = [UIColor orangeColor];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
+            
         }
         
     }];
@@ -140,48 +153,17 @@
     //dismiss keyboard
     [self.view endEditing:YES];
     
-    
-    if (self.whatTextField.text == nil || self.whereTextField.text == nil) {
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Oops!"
-                                                                       message:@"Please enter a search term"
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        alert.view.tintColor = [UIColor yellowColor];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        [self makeNewYelpRequestWithSearchTerm:self.searchTerm andLocation: self.location callbackBlock:^{
-            [self.tableView reloadData];
-        }];
-        
-        
-    }else if (self.whereTextField.text == nil){
-        
-        self.searchTerm = self.whatTextField.text;
-        self.location = @"NewYork, NY";
-        
-        [self makeNewYelpRequestWithSearchTerm:self.searchTerm andLocation: self.location callbackBlock:^{
-            [self.tableView reloadData];
-        }];
+    self.searchTerm = self.whatTextField.text;
+    self.location = self.whereTextField.text;
     
     
-    }else{
+    [self makeNewYelpRequestWithSearchTerm:self.searchTerm andLocation: self.location callbackBlock:^{
         
-        self.searchTerm = self.whatTextField.text;
-        self.location = self.whereTextField.text;
+        [self.tableView reloadData];
         
-        [self makeNewYelpRequestWithSearchTerm:self.searchTerm andLocation: self.location callbackBlock:^{
-            [self.tableView reloadData];
-        }];
-        
-    }
-    
-    
+        self.searchTerm = nil;
+        self.location = nil;
+    }];
     
     return YES;
 }
