@@ -4,7 +4,9 @@
 //
 //  Created by Justine Gartner on 9/21/15.
 //  Copyright © 2015 Mike Kavouras. All rights reserved.
-//
+
+//CustomFont: FreightSansCmpPro-Light , FreightSansCmpPro
+//CustomFont: District Pro , DistrictPro-Thin
 
 #import "vegaNomViewController.h"
 #import "APIManager.h"

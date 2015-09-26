@@ -13,6 +13,8 @@
 		6BA440E91BB0DB5700BEC68E /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA440E81BB0DB5700BEC68E /* APIManager.m */; settings = {ASSET_TAGS = (); }; };
 		6BA440EC1BB0DBA700BEC68E /* vegaNomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA440EB1BB0DBA700BEC68E /* vegaNomViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6BA440F21BB0DF3900BEC68E /* VegaNomSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA440F11BB0DF3900BEC68E /* VegaNomSearchResult.m */; settings = {ASSET_TAGS = (); }; };
+		6BA4F96C1BB6DE7300497B07 /* DistProTh.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F96A1BB6DCFA00497B07 /* DistProTh.otf */; };
+		6BA4F96D1BB6DE7B00497B07 /* FreightSansCmpPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6BA4F96B1BB6DD1200497B07 /* FreightSansCmpPro-Light.otf */; };
 		6BC1C0C81BB37D8A00442479 /* NSURLRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C09C1BB37D8A00442479 /* NSURLRequest+OAuth.m */; settings = {ASSET_TAGS = (); }; };
 		6BC1C0C91BB37D8A00442479 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0A01BB37D8A00442479 /* NSMutableURLRequest+Parameters.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6BC1C0CA1BB37D8A00442479 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0A21BB37D8A00442479 /* NSString+URLEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -53,6 +55,8 @@
 		6BA440EB1BB0DBA700BEC68E /* vegaNomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = vegaNomViewController.m; sourceTree = "<group>"; };
 		6BA440F01BB0DF3900BEC68E /* VegaNomSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegaNomSearchResult.h; sourceTree = "<group>"; };
 		6BA440F11BB0DF3900BEC68E /* VegaNomSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegaNomSearchResult.m; sourceTree = "<group>"; };
+		6BA4F96A1BB6DCFA00497B07 /* DistProTh.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DistProTh.otf; sourceTree = "<group>"; };
+		6BA4F96B1BB6DD1200497B07 /* FreightSansCmpPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FreightSansCmpPro-Light.otf"; sourceTree = "<group>"; };
 		6BC1C09B1BB37D8A00442479 /* NSURLRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+OAuth.h"; sourceTree = "<group>"; };
 		6BC1C09C1BB37D8A00442479 /* NSURLRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+OAuth.m"; sourceTree = "<group>"; };
 		6BC1C09F1BB37D8A00442479 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 		8D7DCD491BAF859400A92AD2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6BA4F96A1BB6DCFA00497B07 /* DistProTh.otf */,
+				6BA4F96B1BB6DD1200497B07 /* FreightSansCmpPro-Light.otf */,
 				8D7DCD4A1BAF859400A92AD2 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -298,6 +304,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA4F96D1BB6DE7B00497B07 /* FreightSansCmpPro-Light.otf in Resources */,
+				6BA4F96C1BB6DE7300497B07 /* DistProTh.otf in Resources */,
 				8D7DCD591BAF859400A92AD2 /* LaunchScreen.storyboard in Resources */,
 				8D7DCD561BAF859400A92AD2 /* Assets.xcassets in Resources */,
 				8D7DCD541BAF859400A92AD2 /* Main.storyboard in Resources */,
