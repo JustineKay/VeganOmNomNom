@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *instagramLogoImageView;
 
 @property (nonatomic) NSMutableArray *searchResults;
 
@@ -26,7 +27,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.tagLabel.text = [NSString stringWithFormat:@"#%@ on Instagram", self.venueNameTag];
+    self.tagLabel.text = [NSString stringWithFormat:@"#%@", self.venueNameTag];
     
     [self fetchInstagramData];
     
@@ -79,7 +80,7 @@
     
     InstaPost *post = self.searchResults[indexPath.row];
     
-    cell.usernameLabel.text = post.username;
+    cell.usernameLabel.text = [NSString stringWithFormat:@"@%@", post.username];
     cell.likesLabel.text = [NSString stringWithFormat:@"Likes: %ld",post.likeCount];
     cell.captionLabel.text = post.caption[@"text"];
     

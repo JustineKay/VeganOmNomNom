@@ -100,20 +100,41 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyl-rO-hgN" userLabel="topView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="84"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#venueName on Instagram" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueo-DH-4lg">
-                                        <rect key="frame" x="20" y="31" width="560" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#venueName on " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueo-DH-4lg">
+                                        <rect key="frame" x="20" y="31" width="130" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Instagram_logo" translatesAutoresizingMaskIntoConstraints="NO" id="6qL-zS-bWW">
+                                        <rect key="frame" x="153" y="22" width="313" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="S3s-OE-Hen"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOV-kn-jC1" userLabel="rtCushion">
+                                        <rect key="frame" x="466" y="0.0" width="134" height="84"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="6qL-zS-bWW" firstAttribute="leading" secondItem="ueo-DH-4lg" secondAttribute="trailing" constant="3" id="9ZB-Uh-vBs"/>
                                     <constraint firstAttribute="height" constant="84" id="KFt-OM-iEa"/>
-                                    <constraint firstItem="ueo-DH-4lg" firstAttribute="centerY" secondItem="Pyl-rO-hgN" secondAttribute="centerY" id="T1m-F2-1aU"/>
-                                    <constraint firstAttribute="trailing" secondItem="ueo-DH-4lg" secondAttribute="trailing" constant="20" id="TIi-Nd-BZ1"/>
+                                    <constraint firstAttribute="bottom" secondItem="MOV-kn-jC1" secondAttribute="bottom" id="S0q-K7-jqi"/>
+                                    <constraint firstAttribute="trailing" secondItem="6qL-zS-bWW" secondAttribute="trailing" constant="117" id="TPZ-cN-3gq"/>
                                     <constraint firstItem="ueo-DH-4lg" firstAttribute="leading" secondItem="Pyl-rO-hgN" secondAttribute="leading" constant="20" id="VcD-kW-S3g"/>
+                                    <constraint firstItem="ueo-DH-4lg" firstAttribute="centerY" secondItem="Pyl-rO-hgN" secondAttribute="centerY" id="Z8b-j9-LWF"/>
+                                    <constraint firstItem="6qL-zS-bWW" firstAttribute="centerY" secondItem="Pyl-rO-hgN" secondAttribute="centerY" id="sa4-MQ-abR"/>
+                                    <constraint firstItem="MOV-kn-jC1" firstAttribute="leading" secondItem="6qL-zS-bWW" secondAttribute="trailing" id="wPc-Zd-bZx"/>
+                                    <constraint firstAttribute="trailing" secondItem="MOV-kn-jC1" secondAttribute="trailing" id="xsL-Wj-oZb"/>
+                                    <constraint firstItem="MOV-kn-jC1" firstAttribute="top" secondItem="Pyl-rO-hgN" secondAttribute="top" id="zyc-3K-51h"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="TPZ-cN-3gq"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="411" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x65-tg-o38">
                                 <rect key="frame" x="0.0" y="148" width="600" height="452"/>
@@ -139,7 +160,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caption" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAf-Ve-kki">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caption" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAf-Ve-kki">
                                                     <rect key="frame" x="150" y="338" width="300" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -187,6 +208,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="instagramLogoImageView" destination="Pyl-rO-hgN" id="Vgu-tq-Wje"/>
                         <outlet property="tableView" destination="x65-tg-o38" id="mFN-y4-Vy5"/>
                         <outlet property="tagLabel" destination="ueo-DH-4lg" id="Eg4-dp-6tS"/>
                     </connections>
@@ -212,4 +234,7 @@
             <point key="canvasLocation" x="-383" y="387"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Instagram_logo" width="313" height="75"/>
+    </resources>
 </document>
