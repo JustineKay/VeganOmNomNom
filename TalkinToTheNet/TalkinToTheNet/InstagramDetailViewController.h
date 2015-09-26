@@ -14,6 +14,4 @@
 
 @property (nonatomic) NSString *venueNameTag;
 
-
-
 @end

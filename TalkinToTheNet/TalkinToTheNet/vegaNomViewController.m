@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *whatTextField;
 @property (weak, nonatomic) IBOutlet UITextField *whereTextField;
 @property (nonatomic) NSMutableArray *searchResults;
+
+//Not currently using CLLocationManager, but plan to implement in next version
 @property (nonatomic) CLLocationManager *locationManager;
 
 @end
@@ -56,29 +58,18 @@
             NSLog(@"An error happened during the request: %@", error);
             
         } else if (businesses) {
-            NSLog(@"Top business info: \n %@", businesses);
-            
-            NSArray *result = businesses;
-            
-            NSLog(@"jsonResponse dictionary: %@", result);
             
             self.searchResults = [[NSMutableArray alloc] init];
             
             for (NSDictionary *business in businesses) {
                 
                 NSString *venue = [business objectForKey:@"name"];
-                NSLog(@"venuename: %@", venue);
                 
                 NSDictionary *location = [business objectForKey:@"location"];
-                NSLog(@"location dictionary: %@", location);
                 
                 NSArray *addressArray = [location objectForKey:@"display_address"];
                 
                 NSString *venueAddress = [APIManager createAddressFromArray:addressArray];
-                
-                NSLog(@"address: %@", venueAddress);
-                
-                NSString *phone = [business objectForKey:@"display_phone"];
                 
                 NSString *venueImage = [business objectForKey:@"image_url"];
                 
@@ -88,12 +79,9 @@
                 
                 venueObject.venueName = venue;
                 venueObject.address = venueAddress;
-                venueObject.phoneNumber = phone;
                 venueObject.avatar = image;
                 
                 [self.searchResults addObject:venueObject];
-            
-                NSLog(@"%@", self.searchResults);
                 
                 block();
             }

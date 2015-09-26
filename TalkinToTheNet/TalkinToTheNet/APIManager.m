@@ -10,23 +10,13 @@
 
 @implementation APIManager
 
-
-//we make this a class method +
-//because the method is stateless.
-//this way we don't have to initialize objects to use it
-
 + (void)GetRequestWithURL: (NSURL *)url
        completionHandler: (void(^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler {
     
-    //CREATING REQUEST:
-    
-    //create session
     NSURLSession *session = [NSURLSession sharedSession];
     
-    //create task
+
     NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
-        //NSLog(@"%@", data);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -34,8 +24,6 @@
             
         });
     }];
-    
-    //PERFORMING REQUEST:
     
     [task resume];
     
@@ -75,9 +63,14 @@
 
 + (NSString *)createTagFromVenueName: (NSString *)venueName{
     
-    NSString *venueNameNoSpaces = [venueName stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *venueNameApostrophe = [venueName stringByReplacingOccurrencesOfString:@"'" withString:@""];
+    NSString *vNameAmpersand = [venueNameApostrophe stringByReplacingOccurrencesOfString:@"&" withString:@"and"];
+    NSString *vNameDash = [vNameAmpersand stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    NSString *vNameE = [vNameDash stringByReplacingOccurrencesOfString:@"é" withString:@"e"];
+    NSString *venueNameNoSpaces = [vNameE stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *babycakesBakery = [venueNameNoSpaces stringByReplacingOccurrencesOfString:@"ErinMcKennasBabyCakes" withString:@"erinmckennasbakery"];
     
-    NSString *venueTag = [venueNameNoSpaces lowercaseString];
+    NSString *venueTag = [babycakesBakery lowercaseString];
     
     return venueTag;
 }

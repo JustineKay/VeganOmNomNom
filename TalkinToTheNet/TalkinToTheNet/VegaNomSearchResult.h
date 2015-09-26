@@ -14,6 +14,5 @@
 @property (nonatomic) NSString *venueName;
 @property (nonatomic) UIImage *avatar;
 @property (nonatomic) NSString *address;
-@property (nonatomic) NSString *phoneNumber;
 
 @end

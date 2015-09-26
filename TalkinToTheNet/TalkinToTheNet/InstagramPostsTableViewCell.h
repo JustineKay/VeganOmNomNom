@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface InstagramPostsTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *instaPostImageView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *instaPostImageView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
