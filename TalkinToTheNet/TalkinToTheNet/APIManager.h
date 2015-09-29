@@ -11,7 +11,11 @@
 
 @interface APIManager : NSObject
 
-+ (void)GetRequestWithURL: (NSURL *)url
++ (void)getYelpAPIRequestForTerm:(NSString *)term location:(NSString *)location completionHandler:(void (^)(NSArray *businesses, NSError *error))completionHandler;
+
++ (NSURLRequest *)_searchRequestWithTerm:(NSString *)term location:(NSString *)location;
+
++ (void)GetInstagramAPIRequestWithURL: (NSURL *)url
         completionHandler: (void(^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;
 
 + (UIImage *)createImageFromString:(NSString *)urlString;

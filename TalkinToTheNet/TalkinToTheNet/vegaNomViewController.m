@@ -48,14 +48,11 @@
 }
 
 
-
 -(void)makeNewYelpRequestWithSearchTerm: (NSString *)searchTerm andLocation: (NSString *)location callbackBlock: (void(^)())block{
     
     NSString *searchTerms = [NSString stringWithFormat:@"vegan,%@", searchTerm];
     
-    YPAPISample *yelpAPIRequest = [[YPAPISample alloc] init];
-    
-    [yelpAPIRequest queryTopBusinessInfoForTerm:searchTerms location:location completionHandler:^(NSArray *businesses, NSError *error) {
+    [APIManager getYelpAPIRequestForTerm:searchTerms location:location completionHandler:^(NSArray *businesses, NSError *error) {
         
         if (error) {
             NSLog(@"An error happened during the request: %@", error);

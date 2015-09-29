@@ -41,7 +41,7 @@ static NSString * const kSearchLimit       = @"20";
           dispatch_async(dispatch_get_main_queue(), ^{
               completionHandler(businessArray, nil);
           });
-//        [self queryBusinessInfoForBusinessId:firstBusinessID completionHandler:completionHandler];
+
       } else {
         completionHandler(nil, error); // No business was found
       }
@@ -49,24 +49,6 @@ static NSString * const kSearchLimit       = @"20";
       completionHandler(nil, error); // An error happened or the HTTP response is not a 200 OK
     }
   }] resume];
-}
-
-- (void)queryBusinessInfoForBusinessId:(NSString *)businessID completionHandler:(void (^)(NSDictionary *topBusinessJSON, NSError *error))completionHandler {
-
-  NSURLSession *session = [NSURLSession sharedSession];
-  NSURLRequest *businessInfoRequest = [self _businessInfoRequestForID:businessID];
-  [[session dataTaskWithRequest:businessInfoRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-    if (!error && httpResponse.statusCode == 200) {
-      NSDictionary *businessResponseJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-
-      completionHandler(businessResponseJSON, error);
-    } else {
-      completionHandler(nil, error);
-    }
-  }] resume];
-
 }
 
 
@@ -88,19 +70,6 @@ static NSString * const kSearchLimit       = @"20";
                            };
 
   return [NSURLRequest requestWithHost:kAPIHost path:kSearchPath params:params];
-}
-
-/**
- Builds a request to hit the business endpoint with the given business ID.
- 
- @param businessID The id of the business for which we request informations
-
- @return The NSURLRequest needed to query the business info
- */
-- (NSURLRequest *)_businessInfoRequestForID:(NSString *)businessID {
-
-  NSString *businessPath = [NSString stringWithFormat:@"%@%@", kBusinessPath, businessID];
-  return [NSURLRequest requestWithHost:kAPIHost path:businessPath];
 }
 
 @end

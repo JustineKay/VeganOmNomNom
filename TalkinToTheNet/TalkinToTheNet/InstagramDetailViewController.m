@@ -39,7 +39,7 @@
     
     NSURL *instagramURL = [NSURL URLWithString:venueNameTagURL];
  
-    [APIManager GetRequestWithURL:instagramURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    [APIManager GetInstagramAPIRequestWithURL:instagramURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
         NSArray *results = json[@"data"];
