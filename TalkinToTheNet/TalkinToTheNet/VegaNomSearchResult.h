@@ -12,7 +12,9 @@
 @interface VegaNomSearchResult : NSObject
 
 @property (nonatomic) NSString *venueName;
-@property (nonatomic) UIImage *avatar;
-@property (nonatomic) NSString *address;
+@property (nonatomic) NSString *venueAvatar;
+@property (nonatomic) NSMutableArray *venueAddress;
+
+-(instancetype)initWithAPIResponse: (NSDictionary *)business;
 
 @end

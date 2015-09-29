@@ -25,9 +25,7 @@
         self.fullName = json[@"user"][@"full_name"];
         self.caption = json[@"caption"];
         
-        NSString *imageURLString = json[@"images"][@"low_resolution"][@"url"];
-        UIImage *image = [APIManager createImageFromString:imageURLString];
-        self.instaImage = image;
+        self.instaImage = json[@"images"][@"low_resolution"][@"url"];
         
         return self;
     

@@ -19,7 +19,7 @@ static NSString * const kSearchLimit       = @"20";
 
 @implementation APIManager
 
-#pragma mark - Public
+#pragma mark - Yelp API Request Public
 
 + (void)getYelpAPIRequestForTerm:(NSString *)term location:(NSString *)location completionHandler:(void (^)(NSArray *businesses, NSError *error))completionHandler {
     
@@ -57,7 +57,7 @@ static NSString * const kSearchLimit       = @"20";
 }
 
 
-#pragma mark - API Request Builders
+#pragma mark - Yelp API Request Builders
 
 /**
  Builds a request to hit the search endpoint with the given parameters.
@@ -76,6 +76,8 @@ static NSString * const kSearchLimit       = @"20";
     
     return [NSURLRequest requestWithHost:kAPIHost path:kSearchPath params:params];
 }
+
+#pragma  mark - Instagam API Request
 
 + (void)GetInstagramAPIRequestWithURL: (NSURL *)url
         completionHandler: (void(^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler {
@@ -131,14 +133,15 @@ static NSString * const kSearchLimit       = @"20";
 
 + (NSString *)createTagFromVenueName: (NSString *)venueName{
     
-    NSString *venueNameApostrophe = [venueName stringByReplacingOccurrencesOfString:@"'" withString:@""];
-    NSString *vNameAmpersand = [venueNameApostrophe stringByReplacingOccurrencesOfString:@"&" withString:@"and"];
+    NSString *vNameApostrophe = [venueName stringByReplacingOccurrencesOfString:@"'" withString:@""];
+    NSString *vNameAmpersand = [vNameApostrophe stringByReplacingOccurrencesOfString:@"&" withString:@"and"];
     NSString *vNameDash = [vNameAmpersand stringByReplacingOccurrencesOfString:@"-" withString:@""];
     NSString *vNameE = [vNameDash stringByReplacingOccurrencesOfString:@"é" withString:@"e"];
-    NSString *venueNameNoSpaces = [vNameE stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSString *babycakesBakery = [venueNameNoSpaces stringByReplacingOccurrencesOfString:@"ErinMcKennasBabyCakes" withString:@"erinmckennasbakery"];
+    NSString *vNameSpaces = [vNameE stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *vNameBabyCakesBakery = [vNameSpaces stringByReplacingOccurrencesOfString:@"ErinMcKennasBabyCakes" withString:@"erinmckennasbakery"];
+    NSString *vNameExclamation = [vNameBabyCakesBakery stringByReplacingOccurrencesOfString:@"!" withString:@""];
     
-    NSString *venueTag = [babycakesBakery lowercaseString];
+    NSString *venueTag = [vNameExclamation lowercaseString];
     
     return venueTag;
 }

@@ -57,31 +57,17 @@
         if (error) {
             NSLog(@"An error happened during the request: %@", error);
             
+            [self presentAlertViewForError];
+            
         } else if (businesses) {
             
             self.searchResults = [[NSMutableArray alloc] init];
             
             for (NSDictionary *business in businesses) {
                 
-                NSString *venue = [business objectForKey:@"name"];
+                VegaNomSearchResult *venue = [[VegaNomSearchResult alloc] initWithAPIResponse:business];
                 
-                NSDictionary *location = [business objectForKey:@"location"];
-                
-                NSArray *addressArray = [location objectForKey:@"display_address"];
-                
-                NSString *venueAddress = [APIManager createAddressFromArray:addressArray];
-                
-                NSString *venueImage = [business objectForKey:@"image_url"];
-                
-                UIImage *image = [APIManager createImageFromString:venueImage];
-            
-                VegaNomSearchResult *venueObject = [[VegaNomSearchResult alloc] init];
-                
-                venueObject.venueName = venue;
-                venueObject.address = venueAddress;
-                venueObject.avatar = image;
-                
-                [self.searchResults addObject:venueObject];
+                [self.searchResults addObject:venue];
                 
                 block();
             }
@@ -89,17 +75,7 @@
         }else {
             NSLog(@"No business was found");
             
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"No businesses found."
-                                                                           message:@"Please be sure to enter a city and state"
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {}];
-            
-            [alert addAction:defaultAction];
-            alert.view.tintColor = [UIColor orangeColor];
-            
-            [self presentViewController:alert animated:YES completion:nil];
+            [self presentAlertViewForNoBusinessesFound];
             
             
         }
@@ -107,6 +83,40 @@
     }];
     
 }
+
+#pragma mark - Alert View methods
+
+-(void)presentAlertViewForNoBusinessesFound{
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"No businesses found."
+                                                                   message:@"Please be sure to enter a city and state"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    alert.view.tintColor = [UIColor orangeColor];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+-(void)presentAlertViewForError{
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                   message:@"Please try your search again"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    alert.view.tintColor = [UIColor orangeColor];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 #pragma mark - CLLocationManagerDelegate methods
 
@@ -139,8 +149,14 @@
     VegaNomSearchResult *currentResult = self.searchResults[indexPath.row];
     
     cell.textLabel.text = currentResult.venueName;
-    cell.detailTextLabel.text = currentResult.address;
-    cell.imageView.image = currentResult.avatar;
+    
+    NSString *venueAddress = [APIManager createAddressFromArray:currentResult.venueAddress];
+    
+    cell.detailTextLabel.text = venueAddress;
+    
+    UIImage *venueAvatar = [APIManager createImageFromString:currentResult.venueAvatar];
+    
+    cell.imageView.image = venueAvatar;
     
     return cell;
 }

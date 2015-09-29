@@ -17,7 +17,7 @@
 @property (nonatomic) NSString *username;
 @property (nonatomic) NSString *fullName;
 @property (nonatomic) NSDictionary *caption;
-@property (nonatomic) UIImage *instaImage;
+@property (nonatomic) NSString *instaImage;
 
 -(instancetype)initWithJSON: (NSDictionary *)json;
 

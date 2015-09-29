@@ -84,7 +84,9 @@
     cell.likesLabel.text = [NSString stringWithFormat:@"Likes: %ld",post.likeCount];
     cell.captionLabel.text = post.caption[@"text"];
     
-    cell.imageView.image = post.instaImage;
+    UIImage *instagramImage = [APIManager createImageFromString:post.instaImage];
+    
+    cell.imageView.image = instagramImage;
     
     return cell;
 }

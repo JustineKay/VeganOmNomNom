@@ -10,4 +10,20 @@
 
 @implementation VegaNomSearchResult
 
+-(instancetype)initWithAPIResponse: (NSDictionary *)business{
+    
+    if (self = [super init]){
+        
+        self.venueName = business[@"name"];
+        
+        self.venueAddress = business[@"location"][@"display_address"];
+        
+        self.venueAvatar = business[@"image_url"];
+        
+        return self;
+    }
+    
+    return nil;
+}
+
 @end
