@@ -11,11 +11,10 @@
 #import "vegaNomViewController.h"
 #import "APIManager.h"
 #import "VegaNomSearchResult.h"
-#import <CoreLocation/CoreLocation.h>
 #import "NSURLRequest+OAuth.h"
-#import "YPAPISample.h"
 #import "InstagramDetailViewController.h"
 #import "InstaPost.h"
+#import <CoreLocation/CoreLocation.h>
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -27,7 +26,6 @@
 @property (nonatomic) NSString *searchTerm;
 @property (nonatomic) NSString *location;
 
-//Not currently using CLLocationManager, but plan to implement in next version
 @property (nonatomic) CLLocationManager *locationManager;
 
 @end
@@ -39,12 +37,15 @@
     
     self.locationManager = [[CLLocationManager alloc] init];
     
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    };
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.whatTextField.delegate = self;
     self.whereTextField.delegate = self;
     self.locationManager.delegate = self;
-    
 }
 
 

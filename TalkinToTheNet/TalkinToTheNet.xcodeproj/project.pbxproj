@@ -10,6 +10,7 @@
 		6B7BFDE41BB5E7F20014B24E /* InstagramPostsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BFDE31BB5E7F20014B24E /* InstagramPostsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		6B7BFDE71BB5E83C0014B24E /* InstaPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BFDE61BB5E83C0014B24E /* InstaPost.m */; settings = {ASSET_TAGS = (); }; };
 		6B7BFDEA1BB5E8A30014B24E /* InstagramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BFDE91BB5E8A30014B24E /* InstagramDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B7E7DBA1BBA23C000EDA881 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7E7DB91BBA23C000EDA881 /* MapKit.framework */; };
 		6BA440E91BB0DB5700BEC68E /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA440E81BB0DB5700BEC68E /* APIManager.m */; settings = {ASSET_TAGS = (); }; };
 		6BA440EC1BB0DBA700BEC68E /* vegaNomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA440EB1BB0DBA700BEC68E /* vegaNomViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6BA440F21BB0DF3900BEC68E /* VegaNomSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA440F11BB0DF3900BEC68E /* VegaNomSearchResult.m */; settings = {ASSET_TAGS = (); }; };
@@ -33,7 +34,6 @@
 		6BC1C0D71BB37D8A00442479 /* OAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0BD1BB37D8A00442479 /* OAServiceTicket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6BC1C0D81BB37D8A00442479 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0C01BB37D8A00442479 /* OAToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6BC1C0D91BB37D8A00442479 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0C21BB37D8A00442479 /* OATokenManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		6BC1C0DA1BB37D8A00442479 /* YPAPISample.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1C0C61BB37D8A00442479 /* YPAPISample.m */; settings = {ASSET_TAGS = (); }; };
 		6BC1C0DC1BB391B500442479 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC1C0DB1BB391B500442479 /* Foundation.framework */; };
 		8D7DCD4B1BAF859400A92AD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7DCD4A1BAF859400A92AD2 /* main.m */; };
 		8D7DCD4E1BAF859400A92AD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7DCD4D1BAF859400A92AD2 /* AppDelegate.m */; };
@@ -49,6 +49,7 @@
 		6B7BFDE61BB5E83C0014B24E /* InstaPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaPost.m; sourceTree = "<group>"; };
 		6B7BFDE81BB5E8A30014B24E /* InstagramDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramDetailViewController.h; sourceTree = "<group>"; };
 		6B7BFDE91BB5E8A30014B24E /* InstagramDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramDetailViewController.m; sourceTree = "<group>"; };
+		6B7E7DB91BBA23C000EDA881 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6BA440E71BB0DB5700BEC68E /* APIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		6BA440E81BB0DB5700BEC68E /* APIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		6BA440EA1BB0DBA700BEC68E /* vegaNomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vegaNomViewController.h; sourceTree = "<group>"; };
@@ -95,9 +96,6 @@
 		6BC1C0C11BB37D8A00442479 /* OATokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OATokenManager.h; sourceTree = "<group>"; };
 		6BC1C0C21BB37D8A00442479 /* OATokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OATokenManager.m; sourceTree = "<group>"; };
 		6BC1C0C31BB37D8A00442479 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
-		6BC1C0C41BB37D8A00442479 /* YelpAPISample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YelpAPISample-Prefix.pch"; sourceTree = "<group>"; };
-		6BC1C0C51BB37D8A00442479 /* YPAPISample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPAPISample.h; sourceTree = "<group>"; };
-		6BC1C0C61BB37D8A00442479 /* YPAPISample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPAPISample.m; sourceTree = "<group>"; };
 		6BC1C0DB1BB391B500442479 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8D7DCD461BAF859400A92AD2 /* TalkinToTheNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkinToTheNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D7DCD4A1BAF859400A92AD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -114,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B7E7DBA1BBA23C000EDA881 /* MapKit.framework in Frameworks */,
 				6BC1C0DC1BB391B500442479 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,9 +126,6 @@
 				6BC1C09B1BB37D8A00442479 /* NSURLRequest+OAuth.h */,
 				6BC1C09C1BB37D8A00442479 /* NSURLRequest+OAuth.m */,
 				6BC1C09D1BB37D8A00442479 /* OAuthConsumer */,
-				6BC1C0C41BB37D8A00442479 /* YelpAPISample-Prefix.pch */,
-				6BC1C0C51BB37D8A00442479 /* YPAPISample.h */,
-				6BC1C0C61BB37D8A00442479 /* YPAPISample.m */,
 			);
 			path = YelpAPISample;
 			sourceTree = "<group>";
@@ -196,6 +192,7 @@
 		8D7DCD3D1BAF859400A92AD2 = {
 			isa = PBXGroup;
 			children = (
+				6B7E7DB91BBA23C000EDA881 /* MapKit.framework */,
 				6BC1C0DB1BB391B500442479 /* Foundation.framework */,
 				8D7DCD481BAF859400A92AD2 /* TalkinToTheNet */,
 				8D7DCD471BAF859400A92AD2 /* Products */,
@@ -320,7 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BC1C0D31BB37D8A00442479 /* OAMutableURLRequest.m in Sources */,
-				6BC1C0DA1BB37D8A00442479 /* YPAPISample.m in Sources */,
 				6BC1C0D81BB37D8A00442479 /* OAToken.m in Sources */,
 				6BC1C0CE1BB37D8A00442479 /* sha1.c in Sources */,
 				6B7BFDEA1BB5E8A30014B24E /* InstagramDetailViewController.m in Sources */,
