@@ -8,6 +8,11 @@
 
 #import "InstagramDetailViewController.h"
 #import "APIManager.h"
+#import "InstaPostTableViewCell.h"
+#import "InstaPostHeaderView.h"
+#import <AFNetworking/AFNetworking.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+
 
 @interface InstagramDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -30,6 +35,19 @@
     self.tagLabel.text = [NSString stringWithFormat:@"#%@", self.venueNameTag];
     
     [self fetchInstagramData];
+    
+    //tell the table view to auto adjust the height of each cell
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44;
+    
+    //grab the nib from the main bundle
+    UINib *nib = [UINib nibWithNibName:@"InstaPostTableViewCell" bundle:nil];
+    
+    //register the nib for the cell identifier
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"InstaPostCellIdentifier"];
+    
+    //do the same thing here in one line:
+    [self.tableView registerNib:[UINib nibWithNibName:@"InstaPostHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"InstaPostHeaderIdentifier"];
     
 }
 
@@ -65,12 +83,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1;
+    return self.searchResults.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.searchResults.count;
+    return 1;
 }
 
 
@@ -78,7 +96,7 @@
     
     InstagramPostsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InstaPostCellIdentifier" forIndexPath:indexPath];
     
-    InstaPost *post = self.searchResults[indexPath.row];
+    InstaPost *post = self.searchResults[indexPath.section];
     
     cell.usernameLabel.text = [NSString stringWithFormat:@"@%@", post.username];
     cell.likesLabel.text = [NSString stringWithFormat:@"Likes: %ld",post.likeCount];
@@ -88,8 +106,42 @@
     
     cell.imageView.image = instagramImage;
     
+    //set up properties with the xib files before completing the following methods
+    
+//    [cell.userMediaImageView sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        cell.userMediaImageView.image = image;
+//    }];
+    
     return cell;
 }
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    InstaPostHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"InstaPostHeaderIdentifier"];
+    
+    InstaPost *post = self.searchResults[section];
+    
+    headerView.usernameLabel.text = post.username;
+    headerView.fullNameLabel.text = post.fullName;
+    
+    headerView.backgroundView = [[UIView alloc] initWithFrame:headerView.bounds];
+    headerView.backgroundView.backgroundColor = [UIColor whiteColor];
+    
+    
+    NSURL *avatarURL = [NSURL URLWithString:post.instaImage];
+    
+    [headerView.imageView sd_setImageWithURL:avatarURL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        headerView.imageView.image = image;
+    }];
+    
+    return headerView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 60.0;
+}
+
 
 
 @end

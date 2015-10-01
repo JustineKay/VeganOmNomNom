@@ -27,6 +27,8 @@
         
         self.instaImage = json[@"images"][@"low_resolution"][@"url"];
         
+        self.avatarImageURL = json[@"user"][@"profile_picture"];
+        
         return self;
     
     }
