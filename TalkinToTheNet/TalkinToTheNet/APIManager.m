@@ -140,8 +140,9 @@ static NSString * const kSearchLimit       = @"20";
     NSString *vNameSpaces = [vNameE stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *vNameBabyCakesBakery = [vNameSpaces stringByReplacingOccurrencesOfString:@"ErinMcKennasBabyCakes" withString:@"erinmckennasbakery"];
     NSString *vNameExclamation = [vNameBabyCakesBakery stringByReplacingOccurrencesOfString:@"!" withString:@""];
+    NSString *vNameI = [vNameExclamation stringByReplacingOccurrencesOfString:@"í" withString:@"i"];
     
-    NSString *venueTag = [vNameExclamation lowercaseString];
+    NSString *venueTag = [vNameI lowercaseString];
     
     return venueTag;
 }

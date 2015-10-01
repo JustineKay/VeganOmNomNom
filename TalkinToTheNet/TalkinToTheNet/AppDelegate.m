@@ -14,8 +14,12 @@
 
 @implementation AppDelegate
 
-/* To find the font family names
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//Fonts added to project
+//DistrictPro-Thin
+//FreightSansCmpPro-Light
+
+//To find the font family names
+/*- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     for (NSString* family in [UIFont familyNames])
     {

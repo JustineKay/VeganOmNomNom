@@ -14,7 +14,10 @@
 #import "NSURLRequest+OAuth.h"
 #import "InstagramDetailViewController.h"
 #import "InstaPost.h"
+//#import "NYAlertViewController.h"
+#import <NYAlertViewController/NYAlertViewController.h>
 #import <CoreLocation/CoreLocation.h>
+#import <AFNetworking/AFNetworking.h>
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -78,6 +81,8 @@
             
             [self presentAlertViewForNoBusinessesFound];
             
+            block ();
+            
             
         }
         
@@ -87,35 +92,73 @@
 
 #pragma mark - Alert View methods
 
+-(void)presentAlertViewForNoLocation{
+    
+    NYAlertViewController *alertViewController = [[NYAlertViewController alloc] initWithNibName:nil bundle:nil];
+    
+    [self setUpCustomAlertViewController:alertViewController
+                               withTitle:@"Oops"
+                                 message:@"Please enter a valid city and state."
+                               andAction:@"OK"];
+    
+    [self presentViewController:alertViewController animated:YES completion:nil];
+    
+}
+
+
 -(void)presentAlertViewForNoBusinessesFound{
     
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"No businesses found."
-                                                                   message:@"Please be sure to enter a city and state"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
+    NYAlertViewController *alertViewController = [[NYAlertViewController alloc] initWithNibName:nil bundle:nil];
     
-    [alert addAction:defaultAction];
-    alert.view.tintColor = [UIColor orangeColor];
+    [self setUpCustomAlertViewController:alertViewController
+                               withTitle:@"No businesses found."
+                                 message:@"Please try your search again"
+                               andAction:@"OK"];
     
-    [self presentViewController:alert animated:YES completion:nil];
+    [self presentViewController:alertViewController animated:YES completion:nil];
     
 }
 
 -(void)presentAlertViewForError{
     
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                   message:@"Please try your search again"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
+    NYAlertViewController *alertViewController = [[NYAlertViewController alloc] initWithNibName:nil bundle:nil];
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
+    [self setUpCustomAlertViewController:alertViewController
+                               withTitle:@"Error"
+                                 message:@"Please try your search again"
+                               andAction:@"OK"];
     
-    [alert addAction:defaultAction];
-    alert.view.tintColor = [UIColor orangeColor];
+    [self presentViewController:alertViewController animated:YES completion:nil];
+}
+
+-(void)setUpCustomAlertViewController: (NYAlertViewController *)alertViewController
+                            withTitle: (NSString *)title
+                              message: (NSString *)message
+                            andAction: (NSString *)actionTitle{
     
-    [self presentViewController:alert animated:YES completion:nil];
+    // Set a title and message
+    alertViewController.title = title;
+    alertViewController.message = message;
+    
+    // Customize appearance as desired
+    alertViewController.buttonCornerRadius = 20.0f;
+    alertViewController.view.tintColor = self.view.tintColor;
+    
+    alertViewController.titleFont = [UIFont fontWithName:@"DistrictPro-Thin" size:19.0f];
+    alertViewController.messageFont = [UIFont fontWithName:@"DistrictPro-Thin" size:16.0f];
+    alertViewController.buttonTitleFont = [UIFont fontWithName:@"DistrictPro-Thin" size:alertViewController.buttonTitleFont.pointSize];
+    alertViewController.cancelButtonTitleFont = [UIFont fontWithName:@"DistrictPro-Thin" size:alertViewController.cancelButtonTitleFont.pointSize];
+    
+    alertViewController.swipeDismissalGestureEnabled = YES;
+    alertViewController.backgroundTapDismissalGestureEnabled = YES;
+    
+    // Add alert actions
+    [alertViewController addAction:[NYAlertAction actionWithTitle:actionTitle
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(NYAlertAction *action) {
+                                                              [self dismissViewControllerAnimated:YES completion:nil];
+                                                          }]];
 }
 
 
@@ -172,14 +215,21 @@
     self.searchTerm = self.whatTextField.text;
     self.location = self.whereTextField.text;
     
-    
-    [self makeNewYelpRequestWithSearchTerm:self.searchTerm andLocation: self.location callbackBlock:^{
+    if ([self.location isEqualToString:@""]){
         
-        [self.tableView reloadData];
+        [self presentAlertViewForNoLocation];
         
-        self.searchTerm = nil;
-        self.location = nil;
-    }];
+    }else{
+        
+        
+        [self makeNewYelpRequestWithSearchTerm:self.searchTerm andLocation: self.location callbackBlock:^{
+            
+            [self.tableView reloadData];
+            
+            self.searchTerm = nil;
+            self.location = nil;
+        }];
+    }
     
     return YES;
 }
