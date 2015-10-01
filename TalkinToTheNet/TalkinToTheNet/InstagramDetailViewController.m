@@ -94,7 +94,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    InstagramPostsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InstaPostCellIdentifier" forIndexPath:indexPath];
+    InstaPostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InstaPostCellIdentifier" forIndexPath:indexPath];
     
     InstaPost *post = self.searchResults[indexPath.section];
     
@@ -104,7 +104,7 @@
     
     UIImage *instagramImage = [APIManager createImageFromString:post.instaImage];
     
-    cell.imageView.image = instagramImage;
+    cell.userMediaImageView.image = instagramImage;
     
     //set up properties with the xib files before completing the following methods
     
