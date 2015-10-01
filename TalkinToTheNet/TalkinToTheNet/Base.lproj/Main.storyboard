@@ -183,13 +183,6 @@
                                                 <constraint firstItem="iGQ-hV-Qp8" firstAttribute="top" secondItem="qxS-wz-POJ" secondAttribute="bottom" constant="8" id="yDC-PT-04d"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="captionLabel" destination="hAf-Ve-kki" id="Kg9-SG-NUy"/>
-                                            <outlet property="imageView" destination="qxS-wz-POJ" id="94H-Qf-Ggv"/>
-                                            <outlet property="instaPostImageView" destination="qxS-wz-POJ" id="87e-Uu-gAi"/>
-                                            <outlet property="likesLabel" destination="iGQ-hV-Qp8" id="0Bk-OM-jn6"/>
-                                            <outlet property="usernameLabel" destination="RCe-wE-J6M" id="kKn-Xc-sdV"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

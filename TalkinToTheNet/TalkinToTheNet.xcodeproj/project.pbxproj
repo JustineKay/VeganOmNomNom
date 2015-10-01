@@ -11,7 +11,6 @@
 		6B7481141BBCCC92000F5F7A /* InstaPostHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B74810F1BBCCC92000F5F7A /* InstaPostHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
 		6B7481151BBCCC92000F5F7A /* InstaPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7481111BBCCC92000F5F7A /* InstaPostTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		6B7481161BBCCC92000F5F7A /* InstaPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7481121BBCCC92000F5F7A /* InstaPostTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		6B7BFDE41BB5E7F20014B24E /* InstagramPostsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BFDE31BB5E7F20014B24E /* InstagramPostsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		6B7BFDE71BB5E83C0014B24E /* InstaPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BFDE61BB5E83C0014B24E /* InstaPost.m */; settings = {ASSET_TAGS = (); }; };
 		6B7BFDEA1BB5E8A30014B24E /* InstagramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BFDE91BB5E8A30014B24E /* InstagramDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6B7E7DBA1BBA23C000EDA881 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7E7DB91BBA23C000EDA881 /* MapKit.framework */; };
@@ -54,8 +53,6 @@
 		6B7481101BBCCC92000F5F7A /* InstaPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaPostTableViewCell.h; sourceTree = "<group>"; };
 		6B7481111BBCCC92000F5F7A /* InstaPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaPostTableViewCell.m; sourceTree = "<group>"; };
 		6B7481121BBCCC92000F5F7A /* InstaPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstaPostTableViewCell.xib; sourceTree = "<group>"; };
-		6B7BFDE21BB5E7F20014B24E /* InstagramPostsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramPostsTableViewCell.h; sourceTree = "<group>"; };
-		6B7BFDE31BB5E7F20014B24E /* InstagramPostsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramPostsTableViewCell.m; sourceTree = "<group>"; };
 		6B7BFDE51BB5E83C0014B24E /* InstaPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaPost.h; sourceTree = "<group>"; };
 		6B7BFDE61BB5E83C0014B24E /* InstaPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaPost.m; sourceTree = "<group>"; };
 		6B7BFDE81BB5E8A30014B24E /* InstagramDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramDetailViewController.h; sourceTree = "<group>"; };
@@ -241,8 +238,6 @@
 				6B7BFDE61BB5E83C0014B24E /* InstaPost.m */,
 				6B7BFDE81BB5E8A30014B24E /* InstagramDetailViewController.h */,
 				6B7BFDE91BB5E8A30014B24E /* InstagramDetailViewController.m */,
-				6B7BFDE21BB5E7F20014B24E /* InstagramPostsTableViewCell.h */,
-				6B7BFDE31BB5E7F20014B24E /* InstagramPostsTableViewCell.m */,
 				6BA440F01BB0DF3900BEC68E /* VegaNomSearchResult.h */,
 				6BA440F11BB0DF3900BEC68E /* VegaNomSearchResult.m */,
 				6BA440E71BB0DB5700BEC68E /* APIManager.h */,
@@ -410,7 +405,6 @@
 				6BC1C0D11BB37D8A00442479 /* OADataFetcher.m in Sources */,
 				8D7DCD4E1BAF859400A92AD2 /* AppDelegate.m in Sources */,
 				6B7481131BBCCC92000F5F7A /* InstaPostHeaderView.m in Sources */,
-				6B7BFDE41BB5E7F20014B24E /* InstagramPostsTableViewCell.m in Sources */,
 				6BC1C0C91BB37D8A00442479 /* NSMutableURLRequest+Parameters.m in Sources */,
 				6BC1C0D21BB37D8A00442479 /* OAHMAC_SHA1SignatureProvider.m in Sources */,
 				6BC1C0D91BB37D8A00442479 /* OATokenManager.m in Sources */,

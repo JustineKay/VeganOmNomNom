@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "InstaPost.h"
-#import "InstagramPostsTableViewCell.h"
 
 @interface InstagramDetailViewController : UIViewController
 
