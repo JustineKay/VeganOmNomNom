@@ -25,7 +25,7 @@
         self.fullName = json[@"user"][@"full_name"];
         self.caption = json[@"caption"];
         
-        self.instaImage = json[@"images"][@"low_resolution"][@"url"];
+        self.instaImage = json[@"images"][@"standard_resolution"][@"url"];
         
         self.avatarImageURL = json[@"user"][@"profile_picture"];
         

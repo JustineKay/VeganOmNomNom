@@ -77,26 +77,7 @@ static NSString * const kSearchLimit       = @"20";
     return [NSURLRequest requestWithHost:kAPIHost path:kSearchPath params:params];
 }
 
-#pragma  mark - Instagam API Request
-
-+ (void)GetInstagramAPIRequestWithURL: (NSURL *)url
-        completionHandler: (void(^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler {
-    
-    NSURLSession *session = [NSURLSession sharedSession];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            completionHandler(data, response, error);
-            
-        });
-    }];
-    
-    [task resume];
-}
-
-
+#pragma mark - data conversion methods
 
 
 + (UIImage *)createImageFromString:(NSString *)urlString{

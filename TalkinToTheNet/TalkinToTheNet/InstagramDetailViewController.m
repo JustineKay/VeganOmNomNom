@@ -55,13 +55,12 @@
     
     NSString *venueNameTagURL = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=ac0ee52ebb154199bfabfb15b498c067", self.venueNameTag];
     
-    NSURL *instagramURL = [NSURL URLWithString:venueNameTagURL];
- 
-    [APIManager GetInstagramAPIRequestWithURL:instagramURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
-        NSArray *results = json[@"data"];
-
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager GET:venueNameTagURL parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        NSArray *results = responseObject[@"data"];
+        
         self.searchResults = [[NSMutableArray alloc] init];
         
         for (NSDictionary *result in results){
@@ -71,9 +70,11 @@
             [self.searchResults addObject:post];
         }
         
-        NSLog(@"%@", json);
-        
         [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        
+        NSLog(@"%@", error);
         
     }];
     
@@ -102,15 +103,12 @@
     cell.likesLabel.text = [NSString stringWithFormat:@"Likes: %ld",post.likeCount];
     cell.captionLabel.text = post.caption[@"text"];
     
-    UIImage *instagramImage = [APIManager createImageFromString:post.instaImage];
+    NSURL *instagramImage = [NSURL URLWithString:post.instaImage];
     
-    cell.userMediaImageView.image = instagramImage;
-    
-    //set up properties with the xib files before completing the following methods
-    
-//    [cell.userMediaImageView sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        cell.userMediaImageView.image = image;
-//    }];
+    [cell.userMediaImageView sd_setImageWithURL:instagramImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        cell.userMediaImageView.image = image;
+    }];
     
     return cell;
 }
