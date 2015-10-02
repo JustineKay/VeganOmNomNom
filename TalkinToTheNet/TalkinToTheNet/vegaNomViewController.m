@@ -46,10 +46,14 @@
     self.whatTextField.delegate = self;
     self.whereTextField.delegate = self;
     self.locationManager.delegate = self;
+    self.navigationItem.title = @"VegaNom";
     
     //start with map centered at the following coordinates
     //with a span from the center point
-    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(40.7, -74);
+    
+    //CLLocationCoordinate2D center = [self getLocation];
+    
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(40.7, -74); //for running in the simulator
     MKCoordinateSpan span = MKCoordinateSpanMake(0.25, 0.25);
     
     [self.mapView setRegion:MKCoordinateRegionMake(center, span) animated:YES];
@@ -60,6 +64,18 @@
         [self.locationManager requestWhenInUseAuthorization];
     };
     
+}
+
+-(CLLocationCoordinate2D) getLocation{
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    [locationManager startUpdatingLocation];
+    CLLocation *location = [locationManager location];
+    CLLocationCoordinate2D coordinate = [location coordinate];
+    
+    return coordinate;
 }
 
 
@@ -112,7 +128,7 @@
     
     [self setUpCustomAlertViewController:alertViewController
                                withTitle:@"Oops"
-                                 message:@"Please enter a valid city and state."
+                                 message:@"Please enter a valid address, city and/or state."
                                andAction:@"OK"];
     
     [self presentViewController:alertViewController animated:YES completion:nil];
