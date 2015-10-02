@@ -37,8 +37,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KbF-SR-Nef">
-                                <rect key="frame" x="0.0" y="148" width="600" height="452"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KbF-SR-Nef">
+                                <rect key="frame" x="0.0" y="376" width="600" height="224"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vegaNomCellIdentifier" textLabel="XHW-Hn-NIB" detailTextLabel="Xbw-lt-eGV" style="IBUITableViewCellStyleSubtitle" id="hQf-vq-rYF">
@@ -70,23 +70,39 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WLP-Em-wuL">
+                                <rect key="frame" x="0.0" y="148" width="600" height="225"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="225" id="ZmB-Ak-IFH"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="KbF-SR-Nef" secondAttribute="trailing" id="3Xk-cu-bNJ"/>
                             <constraint firstItem="KbF-SR-Nef" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Cfj-7h-CV6"/>
+                            <constraint firstItem="WLP-Em-wuL" firstAttribute="top" secondItem="PK2-ET-c8i" secondAttribute="bottom" constant="8" id="Ixt-de-wOp"/>
                             <constraint firstItem="AGV-K2-aFk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="QZ3-qf-b8e"/>
                             <constraint firstItem="PK2-ET-c8i" firstAttribute="top" secondItem="AGV-K2-aFk" secondAttribute="bottom" constant="8" id="QhL-Yv-rBC"/>
                             <constraint firstItem="KbF-SR-Nef" firstAttribute="top" secondItem="PK2-ET-c8i" secondAttribute="bottom" constant="8" id="UhB-3N-CuZ"/>
                             <constraint firstItem="PK2-ET-c8i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="XlC-hd-ypN"/>
                             <constraint firstAttribute="trailing" secondItem="PK2-ET-c8i" secondAttribute="trailing" constant="20" id="cUY-Bp-rFM"/>
+                            <constraint firstAttribute="trailing" secondItem="WLP-Em-wuL" secondAttribute="trailing" id="duX-zo-xll"/>
+                            <constraint firstItem="WLP-Em-wuL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="f3t-Ad-3L7"/>
+                            <constraint firstItem="KbF-SR-Nef" firstAttribute="top" secondItem="WLP-Em-wuL" secondAttribute="bottom" id="lO7-cM-ZPw"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="KbF-SR-Nef" secondAttribute="bottom" id="oo3-q0-kps"/>
                             <constraint firstAttribute="trailing" secondItem="AGV-K2-aFk" secondAttribute="trailing" constant="20" id="saS-K6-7RA"/>
                             <constraint firstItem="AGV-K2-aFk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="yD7-oB-kFQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="UhB-3N-CuZ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="8Tx-r2-alZ"/>
                     <connections>
+                        <outlet property="mapView" destination="WLP-Em-wuL" id="as1-tK-WLc"/>
                         <outlet property="tableView" destination="KbF-SR-Nef" id="cgX-Ni-crw"/>
                         <outlet property="whatTextField" destination="AGV-K2-aFk" id="Bep-pv-h0J"/>
                         <outlet property="whereTextField" destination="PK2-ET-c8i" id="7Qn-Qv-iAt"/>
@@ -94,6 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="211" y="285"/>
         </scene>
         <!--Instagram Detail View Controller-->
         <scene sceneID="hdZ-hU-oSY">

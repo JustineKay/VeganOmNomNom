@@ -18,10 +18,13 @@
 #import <NYAlertViewController/NYAlertViewController.h>
 #import <CoreLocation/CoreLocation.h>
 #import <AFNetworking/AFNetworking.h>
+#import "MapKit/MapKit.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 @interface vegaNomViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate>
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *whatTextField;
 @property (weak, nonatomic) IBOutlet UITextField *whereTextField;
@@ -37,6 +40,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //start with map centered at the following coordinates
+    //with a span from the center point
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(40.7, -74);
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.8, 0.8);
+    
+    [self.mapView setRegion:MKCoordinateRegionMake(center, span) animated:YES];
     
     self.locationManager = [[CLLocationManager alloc] init];
     
