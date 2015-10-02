@@ -14,7 +14,6 @@
 #import "NSURLRequest+OAuth.h"
 #import "InstagramDetailViewController.h"
 #import "InstaPost.h"
-//#import "NYAlertViewController.h"
 #import <NYAlertViewController/NYAlertViewController.h>
 #import <CoreLocation/CoreLocation.h>
 #import <AFNetworking/AFNetworking.h>
@@ -29,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *whatTextField;
 @property (weak, nonatomic) IBOutlet UITextField *whereTextField;
 @property (nonatomic) NSMutableArray *searchResults;
+@property (nonatomic) NSArray *businesses;
 @property (nonatomic) NSString *searchTerm;
 @property (nonatomic) NSString *location;
 
@@ -41,10 +41,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.whatTextField.delegate = self;
+    self.whereTextField.delegate = self;
+    self.locationManager.delegate = self;
+    
     //start with map centered at the following coordinates
     //with a span from the center point
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(40.7, -74);
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.8, 0.8);
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.25, 0.25);
     
     [self.mapView setRegion:MKCoordinateRegionMake(center, span) animated:YES];
     
@@ -54,11 +60,6 @@
         [self.locationManager requestWhenInUseAuthorization];
     };
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.whatTextField.delegate = self;
-    self.whereTextField.delegate = self;
-    self.locationManager.delegate = self;
 }
 
 
@@ -74,6 +75,9 @@
             [self presentAlertViewForError];
             
         } else if (businesses) {
+            
+            NSLog(@"businesses: %@", businesses);
+            self.businesses = businesses;
             
             self.searchResults = [[NSMutableArray alloc] init];
             
@@ -231,10 +235,11 @@
         
     }else{
         
-        
         [self makeNewYelpRequestWithSearchTerm:self.searchTerm andLocation: self.location callbackBlock:^{
             
             [self.tableView reloadData];
+            
+            [self updateMap];
             
             self.searchTerm = nil;
             self.location = nil;
@@ -260,6 +265,50 @@
     
     detailViewController.venueNameTag = currentResultTagName;
     
+}
+
+#pragma mark - map view methods
+
+-(void)updateMap{
+    
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    for (NSDictionary *business in self.businesses) {
+        [self addMapAnnotationForVenue:business];
+    }
+}
+
+-(void)addMapAnnotationForVenue: (NSDictionary *)venue{
+    
+    MKPointAnnotation *mapPin = [[MKPointAnnotation alloc] init];
+    
+    double lat = [venue[@"location"][@"coordinate"][@"latitude"]doubleValue];
+    double lng = [venue[@"location"][@"coordinate"][@"longitude"]doubleValue];
+    
+    CLLocationCoordinate2D latLng = CLLocationCoordinate2DMake(lat, lng);
+    
+    CLLocationCoordinate2D center = latLng;
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.25, 0.25);
+    [self.mapView setRegion:MKCoordinateRegionMake(center, span) animated:YES];
+    
+    mapPin.coordinate = latLng;
+    mapPin.title = venue[@"name"];
+    mapPin.subtitle = [self findIfVenueIsClosedOrOpen:venue[@"is_closed"]];
+    
+    [self.mapView addAnnotation:mapPin];
+}
+
+-(NSString *)findIfVenueIsClosedOrOpen: (BOOL)isClosed{
+    
+    NSString *openOrClosed;
+ 
+    if (isClosed) {
+        openOrClosed = @"Currently Closed";
+    }else{
+        
+        openOrClosed = @"OPEN";
+    }
+    return openOrClosed;
 }
 
 @end
