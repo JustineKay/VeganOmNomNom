@@ -1,6 +1,11 @@
-# unit-2-hw-1
+# Vegan Om Nom Nom  
 
-Welcome to the world of places.   
+###Description  
+Search for Vegan businesses using the Yelp API.  
+View location on a mapview.  
+View posts with the #restaurantName using the Instagram API.  
+  
+Originated from class assignment: Unit-2-hw-1 (See requirements below.)   
 
 ### Objective
 Using either the **[Foursquare API](https://developer.foursquare.com)** or the **[Yelp API](https://www.yelp.com/developers/documentation/v2/overview)**, fetch a list of places near a specific location. 
@@ -10,7 +15,6 @@ Your application should also provide the ability to view additional data (catego
 **The interesting part**  
 On the detail page, your application must provide one additional piece of information provided by another api. For example, fetch the number of Twitter followers based on their twitter handle. Or pull instagram pictures based on the category of the venue. 
 
-I'll update this with some screens.
 
 ### Ideas
 > **Twitter**
