@@ -5,9 +5,10 @@ Search for Vegan businesses using the Yelp API.
 View location on a mapview.  
 View posts with the #restaurantName using the Instagram API.  
   
-Originated from class assignment:    
+    
 
-### Unit-2-hw-1 Objective
+#### Originated from class assignment, unit-2-hw-1:  
+#####Objective  
 Using either the **[Foursquare API](https://developer.foursquare.com)** or the **[Yelp API](https://www.yelp.com/developers/documentation/v2/overview)**, fetch a list of places near a specific location. 
 
 Your application should also provide the ability to view additional data (category, address, avatar, etc)
